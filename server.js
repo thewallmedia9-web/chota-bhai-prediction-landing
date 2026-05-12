@@ -34,10 +34,13 @@ app.use(cors({
 // Serve frontend (index.html and any sibling static assets) from project root
 app.use(express.static(__dirname));
 
-// Global rate limit — 100 requests / 15 min per IP
+// Global rate limit — 100 requests / 15 min per IP.
+// Skip /health so Render's health-check probes (which can fire every few seconds)
+// don't exhaust the limit and trigger spurious instance restarts.
 app.use(rateLimit({
   windowMs : 15 * 60 * 1000,
   max      : 100,
+  skip     : (req) => req.path === '/health',
   message  : { success: false, message: 'Too many requests. Please try again later.' }
 }));
 
