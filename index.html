@@ -541,10 +541,22 @@ const API_BASE = '';
   try {
     const params = new URLSearchParams(window.location.search);
     const captured = {};
-    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'].forEach(key => {
-      const v = params.get(key);
-      if (v) captured[key] = v;
-    });
+    // Some browsers / privacy extensions silently strip the standard `utm_*`
+    // family on navigation. Also accept short generic aliases (`src`, `medium`,
+    // `campaign`) which nothing recognises as tracking, so they always survive.
+    const ALIASES = {
+      utm_source: 'utm_source', src:    'utm_source', source:   'utm_source',
+      utm_medium: 'utm_medium', medium: 'utm_medium', med:      'utm_medium',
+      utm_campaign:'utm_campaign', campaign:'utm_campaign', camp:'utm_campaign',
+      utm_content:'utm_content',
+      utm_term:   'utm_term',
+      gclid:      'gclid',
+      fbclid:     'fbclid'
+    };
+    for (const [urlKey, normalisedKey] of Object.entries(ALIASES)) {
+      const v = params.get(urlKey);
+      if (v && !captured[normalisedKey]) captured[normalisedKey] = v;
+    }
     console.log('[Pro Media] URL on landing:', window.location.href);
     console.log('[Pro Media] Attribution captured:', captured);
     if (Object.keys(captured).length) {
