@@ -103,31 +103,20 @@ async function sendSMS(phone, otp) {
 /**
  * Forward a lead to a Google Sheets webhook (Apps Script Web App URL).
  *
- * Apps Script's published URL responds to POST with a 302 redirect to
- * `script.googleusercontent.com`. Axios's default redirect-follower converts
- * POST → GET on 302 (per the older HTTP spec), which loses our JSON body —
- * the sheet gets an empty row. So we disable auto-redirect and follow the
- * 302 ourselves, re-POSTing the same body.
+ * Apps Script Web Apps with "Anyone" access process the incoming POST body
+ * in doPost() immediately, then respond with a 302 redirect to a
+ * `script.googleusercontent.com` URL where the response body actually lives.
+ * Axios's default redirect handling converts that 302 follow-up to a GET,
+ * which is exactly what the redirect target expects (it's a read endpoint,
+ * not a write endpoint). So the simplest correct implementation is to just
+ * POST and let axios auto-follow.
  */
 async function forwardLeadToSheet(webhookUrl, lead) {
-  const first = await axios.post(webhookUrl, lead, {
-    timeout       : 10000,
-    headers       : { 'Content-Type': 'application/json' },
-    maxRedirects  : 0,
-    validateStatus: () => true     // accept any status so we can branch on 302 vs 2xx
+  const res = await axios.post(webhookUrl, lead, {
+    timeout: 10000,
+    headers: { 'Content-Type': 'application/json' }
   });
-
-  if (first.status >= 300 && first.status < 400 && first.headers.location) {
-    const followed = await axios.post(first.headers.location, lead, {
-      timeout: 10000,
-      headers: { 'Content-Type': 'application/json' }
-    });
-    return followed.data;
-  }
-  if (first.status >= 200 && first.status < 300) {
-    return first.data;
-  }
-  throw new Error(`Webhook returned HTTP ${first.status}`);
+  return res.data;
 }
 
 // ──────────────────────────────────────────
