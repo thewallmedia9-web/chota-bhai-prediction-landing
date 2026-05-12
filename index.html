@@ -767,7 +767,8 @@ async function submitForm() {
       name: state.fullName, phone: state.phone,
       spend: state.dailySpend, channel: state.channel
     });
-    window.open('thankyou.html?'+params.toString(), '_blank');
+    // Navigate in the same tab — works on mobile (where window.open is popup-blocked).
+    window.location.href = 'thankyou.html?'+params.toString();
 
   } catch(err) {
     errBox.textContent = err.message || 'Submission failed. Please try again.';
