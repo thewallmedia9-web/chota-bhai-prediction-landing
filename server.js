@@ -100,6 +100,36 @@ async function sendSMS(phone, otp) {
   return data;
 }
 
+/**
+ * Forward a lead to a Google Sheets webhook (Apps Script Web App URL).
+ *
+ * Apps Script's published URL responds to POST with a 302 redirect to
+ * `script.googleusercontent.com`. Axios's default redirect-follower converts
+ * POST → GET on 302 (per the older HTTP spec), which loses our JSON body —
+ * the sheet gets an empty row. So we disable auto-redirect and follow the
+ * 302 ourselves, re-POSTing the same body.
+ */
+async function forwardLeadToSheet(webhookUrl, lead) {
+  const first = await axios.post(webhookUrl, lead, {
+    timeout       : 10000,
+    headers       : { 'Content-Type': 'application/json' },
+    maxRedirects  : 0,
+    validateStatus: () => true     // accept any status so we can branch on 302 vs 2xx
+  });
+
+  if (first.status >= 300 && first.status < 400 && first.headers.location) {
+    const followed = await axios.post(first.headers.location, lead, {
+      timeout: 10000,
+      headers: { 'Content-Type': 'application/json' }
+    });
+    return followed.data;
+  }
+  if (first.status >= 200 && first.status < 300) {
+    return first.data;
+  }
+  throw new Error(`Webhook returned HTTP ${first.status}`);
+}
+
 // ──────────────────────────────────────────
 // ROUTES
 // ──────────────────────────────────────────
@@ -243,12 +273,17 @@ app.post('/api/lead/submit', async (req, res) => {
       ip         : req.ip
     };
 
-    // ── TODO: Save to your database here ──
-    // e.g. await db.collection('leads').insertOne(lead);
     console.log('[NEW LEAD]', JSON.stringify(lead, null, 2));
 
-    // ── TODO: Notify your team (email / WhatsApp alert) ──
-    // e.g. await sendSlackAlert(lead);
+    // Fire-and-forget: forward to Google Sheets via Apps Script webhook.
+    // Don't await — a slow or temporarily-down sheet should never make the
+    // user's form submission fail. Render logs are still the source of truth.
+    const webhookUrl = process.env.LEADS_WEBHOOK_URL;
+    if (webhookUrl) {
+      forwardLeadToSheet(webhookUrl, lead)
+        .then(data  => console.log(`[LEADS WEBHOOK] Lead ${lead.id} stored:`, JSON.stringify(data)))
+        .catch(err  => console.error(`[LEADS WEBHOOK ERROR] Lead ${lead.id}:`, err.message));
+    }
 
     return res.json({
       success: true,
