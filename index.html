@@ -532,6 +532,36 @@
 const API_BASE = '';
 
 // ════════════════════════════════════════════
+// ATTRIBUTION — capture once on landing, persist for the session
+// ════════════════════════════════════════════
+// Reads UTM tags and ad-platform click IDs from the URL the visitor arrived on,
+// stashes them in sessionStorage so they survive page refreshes / navigation,
+// and gets attached to the lead at submit time so we know which ad brought them.
+(function captureAttribution() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const captured = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'].forEach(key => {
+      const v = params.get(key);
+      if (v) captured[key] = v;
+    });
+    if (Object.keys(captured).length) {
+      // Only overwrite if we actually have new tracking on this visit — preserve
+      // first-touch attribution if the visitor revisits without UTM tags.
+      sessionStorage.setItem('promedia_attribution', JSON.stringify(captured));
+    }
+  } catch (e) { /* sessionStorage can be blocked in some private modes — ignore */ }
+})();
+
+function getAttribution() {
+  try {
+    return JSON.parse(sessionStorage.getItem('promedia_attribution') || '{}');
+  } catch (e) {
+    return {};
+  }
+}
+
+// ════════════════════════════════════════════
 // STATE
 // ════════════════════════════════════════════
 let state = {
@@ -749,6 +779,7 @@ async function submitForm() {
   loader.classList.add('show');
 
   try {
+    const attribution = getAttribution();
     const res = await fetch(`${API_BASE}/api/lead/submit`, {
       method : 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -757,7 +788,13 @@ async function submitForm() {
         phone              : state.phone,
         daily_spend        : state.dailySpend,
         channel            : state.channel,
-        verification_token : state.verificationToken
+        verification_token : state.verificationToken,
+        // Attribution — tells the backend which ad / source this lead came from
+        utm_source         : attribution.utm_source   || '',
+        utm_medium         : attribution.utm_medium   || '',
+        utm_campaign       : attribution.utm_campaign || '',
+        gclid              : attribution.gclid        || '',
+        fbclid             : attribution.fbclid       || ''
       })
     });
     const data = await res.json();

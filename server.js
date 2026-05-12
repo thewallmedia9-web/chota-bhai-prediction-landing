@@ -14,6 +14,10 @@ const crypto      = require('crypto');
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust Render's load balancer so req.ip reflects the real client IP from
+// X-Forwarded-For (not the proxy's internal address like ::1 / 127.0.0.1).
+app.set('trust proxy', 1);
+
 // ── In-memory OTP store  { phone → { otp, expires, attempts } }
 const otpStore = new Map();
 
@@ -57,6 +61,27 @@ function generateOTP() {
 /** Validate Indian mobile number (10 digits, starts 6-9) */
 function isValidIndianNumber(phone) {
   return /^[6-9]\d{9}$/.test(phone);
+}
+
+/** Trim, strip control chars, and cap length — for any user-supplied free text. */
+function sanitizeText(value, maxLen = 200) {
+  return String(value ?? '').replace(/[\x00-\x1F\x7F]/g, '').slice(0, maxLen).trim();
+}
+
+/**
+ * Classify the lead's traffic source from the captured tracking params.
+ * Priority: Google's gclid → Meta's fbclid → utm_source → '(direct)'.
+ * Returns a human-friendly label that's easy to filter on in the sheet.
+ */
+function detectSource({ gclid, fbclid, utm_source }) {
+  if (gclid)  return 'Google Ads';
+  if (fbclid) return 'Meta Ads';
+  const src = sanitizeText(utm_source).toLowerCase();
+  if (!src) return '(direct)';
+  if (['google', 'googleads', 'google-ads', 'adwords'].includes(src)) return 'Google Ads';
+  if (['facebook', 'fb', 'meta'].includes(src))                       return 'Meta Ads';
+  if (['instagram', 'ig'].includes(src))                              return 'Instagram Ads';
+  return sanitizeText(utm_source, 60);   // unknown but valid source — pass through
 }
 
 /** Send OTP via adbizzdigital SMS panel (DLT-compliant transactional route). */
@@ -235,7 +260,11 @@ const verifiedTokens = new Map();
 
 app.post('/api/lead/submit', async (req, res) => {
   try {
-    const { name, phone, daily_spend, channel, verification_token } = req.body;
+    const {
+      name, phone, daily_spend, channel, verification_token,
+      // Attribution params (captured from the URL when the visitor landed).
+      utm_source, utm_medium, utm_campaign, gclid, fbclid
+    } = req.body;
 
     // Validate token
     const tokenData = verifiedTokens.get(verification_token);
@@ -253,13 +282,19 @@ app.post('/api/lead/submit', async (req, res) => {
     }
 
     const lead = {
-      id         : crypto.randomUUID(),
-      name       : name.trim(),
+      id          : crypto.randomUUID(),
+      name        : name.trim(),
       phone,
-      daily_spend: parseInt(daily_spend),
+      daily_spend : parseInt(daily_spend),
       channel,
+      // Attribution — sanitised to avoid garbage / abuse from query strings.
+      source      : detectSource({ gclid, fbclid, utm_source }),
+      utm_medium  : sanitizeText(utm_medium, 60),
+      utm_campaign: sanitizeText(utm_campaign, 120),
+      gclid       : sanitizeText(gclid, 200),
+      fbclid      : sanitizeText(fbclid, 200),
       submitted_at: new Date().toISOString(),
-      ip         : req.ip
+      ip          : req.ip
     };
 
     console.log('[NEW LEAD]', JSON.stringify(lead, null, 2));
