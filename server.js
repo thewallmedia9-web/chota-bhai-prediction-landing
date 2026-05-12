@@ -263,6 +263,10 @@ const verifiedTokens = new Map();
 
 app.post('/api/lead/submit', async (req, res) => {
   try {
+    // Diagnostic: log exactly what the frontend sent. Helps debug attribution
+    // when leads are landing as "(direct)" despite UTM-tagged URLs.
+    console.log('[LEAD SUBMIT BODY]', JSON.stringify(req.body));
+
     const {
       name, phone, daily_spend, channel, verification_token,
       // Attribution params (captured from the URL when the visitor landed).
@@ -284,6 +288,12 @@ app.post('/api/lead/submit', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Invalid spend amount.' });
     }
 
+    // Real client IP: prefer the original first hop in X-Forwarded-For (set by
+    // Render / Cloudflare), fall back to Express's req.ip. Render places the
+    // real client IP at the start of the X-Forwarded-For chain.
+    const xff = (req.headers['x-forwarded-for'] || '').toString();
+    const realIp = xff.split(',')[0].trim() || req.ip;
+
     const lead = {
       id          : crypto.randomUUID(),
       name        : name.trim(),
@@ -292,12 +302,13 @@ app.post('/api/lead/submit', async (req, res) => {
       channel,
       // Attribution — sanitised to avoid garbage / abuse from query strings.
       source      : detectSource({ gclid, fbclid, utm_source }),
+      utm_source  : sanitizeText(utm_source, 60),       // raw — for debugging
       utm_medium  : sanitizeText(utm_medium, 60),
       utm_campaign: sanitizeText(utm_campaign, 120),
       gclid       : sanitizeText(gclid, 200),
       fbclid      : sanitizeText(fbclid, 200),
       submitted_at: new Date().toISOString(),
-      ip          : req.ip
+      ip          : realIp
     };
 
     console.log('[NEW LEAD]', JSON.stringify(lead, null, 2));

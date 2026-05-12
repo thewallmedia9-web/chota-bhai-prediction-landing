@@ -545,12 +545,19 @@ const API_BASE = '';
       const v = params.get(key);
       if (v) captured[key] = v;
     });
+    console.log('[Pro Media] URL on landing:', window.location.href);
+    console.log('[Pro Media] Attribution captured:', captured);
     if (Object.keys(captured).length) {
       // Only overwrite if we actually have new tracking on this visit — preserve
       // first-touch attribution if the visitor revisits without UTM tags.
       sessionStorage.setItem('promedia_attribution', JSON.stringify(captured));
+      console.log('[Pro Media] Saved to sessionStorage');
+    } else {
+      console.log('[Pro Media] No UTM/click params in URL — direct visit');
     }
-  } catch (e) { /* sessionStorage can be blocked in some private modes — ignore */ }
+  } catch (e) {
+    console.warn('[Pro Media] Attribution capture failed:', e);
+  }
 })();
 
 function getAttribution() {
