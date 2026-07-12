@@ -3,23 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Join Chota Bhai Prediction Channel on Telegram for cricket match analysis, toss updates, score angles, and prediction posts.">
+  <meta name="description" content="Join Chota Bhai Prediction Channel on Telegram for accurate prediction updates, secured ID support, toss updates, and faster match updates.">
   <title>Chota Bhai Prediction Channel | Join Telegram</title>
   <style>
     :root {
       --bg: #071014;
-      --panel: #0e1b20;
-      --panel-2: #132a32;
-      --ink: #f4fbff;
-      --muted: #9cb2ba;
-      --line: rgba(255, 255, 255, 0.12);
-      --cyan: #2cc7ff;
-      --mint: #27d8a4;
-      --amber: #ffbd57;
-      --rose: #ff6b7a;
-      --violet: #9a7cff;
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
-      --radius: 8px;
+      --panel: #102229;
+      --panel-2: #15313a;
+      --text: #f5fbff;
+      --muted: #a9bdc4;
+      --line: rgba(255,255,255,.13);
+      --blue: #2cc7ff;
+      --green: #27d8a4;
+      --white: #ffffff;
+      --dark: #061014;
     }
 
     * { box-sizing: border-box; }
@@ -28,270 +25,249 @@
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
-      color: var(--ink);
-      overflow-x: hidden;
+      color: var(--text);
     }
     a { color: inherit; }
 
-    .page-shell {
+    .page {
       min-height: 100vh;
       background:
-        linear-gradient(115deg, rgba(7, 16, 20, 0.95) 0%, rgba(7, 16, 20, 0.78) 48%, rgba(7, 16, 20, 0.5) 100%),
-        url("data:image/svg+xml,%3Csvg width='1800' height='1100' viewBox='0 0 1800 1100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop stop-color='%230b1a21'/%3E%3Cstop offset='.45' stop-color='%23122630'/%3E%3Cstop offset='1' stop-color='%23091418'/%3E%3C/linearGradient%3E%3Cfilter id='s'%3E%3CfeDropShadow dx='0' dy='22' stdDeviation='22' flood-color='%23000000' flood-opacity='.35'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='1800' height='1100' fill='url(%23a)'/%3E%3Cg opacity='.32' stroke='%2328454f' stroke-width='2'%3E%3Cpath d='M0 760c161-58 298-58 411 2 192 101 315 93 472-24 126-94 298-128 514-73 135 34 266 94 403 182' fill='none'/%3E%3Cpath d='M0 890c220-95 389-87 507-18 172 101 298 97 474-39 133-103 309-153 522-107 104 23 203 73 297 151' fill='none'/%3E%3C/g%3E%3C/svg%3E");
-      background-size: cover;
-      background-position: center;
+        linear-gradient(120deg, rgba(7,16,20,.97), rgba(7,16,20,.84) 54%, rgba(12,37,45,.72)),
+        radial-gradient(circle at 84% 18%, rgba(44,199,255,.18), transparent 34%),
+        radial-gradient(circle at 16% 82%, rgba(39,216,164,.13), transparent 34%);
     }
 
     .nav {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 20;
+      position: sticky;
+      top: 0;
+      z-index: 10;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding: 18px clamp(18px, 5vw, 64px);
-      background: rgba(7, 16, 20, 0.8);
+      gap: 16px;
+      padding: 16px clamp(16px, 5vw, 64px);
+      background: rgba(7,16,20,.82);
       border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(16px);
     }
     .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; }
-    .brand-mark, .avatar {
+    .brand-mark {
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
-      color: #061014;
-      background: var(--cyan);
-      border-radius: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--dark);
+      font-size: 14px;
       font-weight: 950;
     }
-    .brand-mark { width: 38px; height: 38px; font-size: 14px; }
-    .avatar { width: 42px; height: 42px; border-radius: 50%; font-size: 14px; }
-    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: 14px; }
-    .nav-links a { text-decoration: none; }
 
-    .cta {
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border: 0;
+      min-height: 52px;
+      padding: 0 24px;
       border-radius: 8px;
-      background: var(--cyan);
-      color: #061014;
-      cursor: pointer;
-      font-weight: 900;
+      border: 0;
+      background: var(--green);
+      color: var(--dark);
+      font-weight: 950;
       text-decoration: none;
-      box-shadow: 0 14px 36px rgba(44, 199, 255, 0.26);
-      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+      box-shadow: 0 16px 44px rgba(39,216,164,.26);
+      transition: transform .18s ease, filter .18s ease;
     }
-    .cta:hover { transform: translateY(-2px); background: #68d8ff; box-shadow: 0 18px 44px rgba(44, 199, 255, 0.34); }
-    .cta.secondary { background: rgba(255, 255, 255, 0.08); color: var(--ink); border: 1px solid var(--line); box-shadow: none; }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .btn.blue { background: var(--blue); box-shadow: 0 16px 44px rgba(44,199,255,.24); }
+    .btn.ghost { background: rgba(255,255,255,.08); color: var(--text); border: 1px solid var(--line); box-shadow: none; }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(360px, 540px);
-      gap: clamp(34px, 7vw, 96px);
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .8fr);
+      gap: clamp(34px, 7vw, 84px);
       align-items: center;
-      min-height: 100vh;
-      padding: 118px clamp(18px, 5vw, 64px) 56px;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(52px, 8vw, 92px) 18px 72px;
     }
-    .eyebrow {
+    .badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 12px;
-      border: 1px solid rgba(39, 216, 164, 0.32);
+      padding: 8px 12px;
+      border: 1px solid rgba(39,216,164,.32);
       border-radius: 999px;
-      background: rgba(39, 216, 164, 0.08);
-      color: #bdfbe8;
+      background: rgba(39,216,164,.08);
+      color: #baf8e7;
       font-size: 13px;
-      font-weight: 750;
+      font-weight: 800;
     }
-    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 6px rgba(39, 216, 164, 0.12); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
     h1 {
-      max-width: 790px;
+      max-width: 760px;
       margin: 22px 0 0;
-      font-size: clamp(43px, 6.4vw, 88px);
-      line-height: 0.96;
+      font-size: clamp(42px, 6.3vw, 78px);
+      line-height: 1;
       letter-spacing: 0;
       text-wrap: balance;
     }
-    .hero-copy { max-width: 650px; margin: 24px 0 0; color: #c9d8dd; font-size: clamp(17px, 2vw, 21px); line-height: 1.65; }
-    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-    .proof-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; max-width: 700px; margin-top: 42px; }
-    .proof-item { padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255, 255, 255, 0.055); backdrop-filter: blur(12px); }
-    .proof-item strong { display: block; margin-bottom: 6px; font-size: 23px; }
-    .proof-item span { display: block; color: var(--muted); font-size: 13px; line-height: 1.45; }
-    .trust-note { max-width: 660px; margin-top: 18px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .lead {
+      max-width: 640px;
+      margin: 22px 0 0;
+      color: #c9d9de;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.6;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+    .small-note { max-width: 620px; margin-top: 18px; color: var(--muted); font-size: 13px; line-height: 1.55; }
 
-    .phone-wrap { position: relative; min-height: 680px; display: grid; place-items: center; }
-    .phone {
-      width: min(100%, 378px);
-      min-height: 650px;
-      border: 12px solid #071115;
-      border-radius: 38px;
-      background: #102229;
-      box-shadow: var(--shadow);
+    .phone-card {
+      width: min(100%, 390px);
+      margin: 0 auto;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #132a32, #0d1c22);
+      box-shadow: 0 24px 80px rgba(0,0,0,.38);
       overflow: hidden;
     }
-    .phone-top { display: flex; align-items: center; gap: 10px; padding: 23px 20px 18px; background: #132a32; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
-    .channel-name { font-weight: 950; }
-    .channel-sub { margin-top: 3px; color: var(--muted); font-size: 12px; }
-    .message-list { display: grid; gap: 12px; padding: 18px; }
-    .post-card { padding: 14px; border-radius: 8px; background: #16313a; border: 1px solid rgba(255, 255, 255, 0.09); }
-    .post-card.accent { background: rgba(44, 199, 255, 0.14); border-color: rgba(44, 199, 255, 0.36); }
-    .post-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; }
-    .post-title { margin-top: 8px; font-size: 15px; line-height: 1.28; font-weight: 900; }
-    .post-copy { margin: 7px 0 0; color: #c6d8de; font-size: 12px; line-height: 1.45; }
-    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .tag { padding: 5px 8px; border-radius: 999px; background: rgba(255,255,255,.08); color: #dcecf1; font-size: 11px; font-weight: 800; }
-    .tag.hot { background: rgba(39,216,164,.17); color: #aef8e3; }
-    .channel-chart { padding: 14px; border-radius: 8px; background: #0d1d23; border: 1px solid rgba(39,216,164,.26); }
-    .chart-head { display: flex; justify-content: space-between; align-items: end; gap: 12px; margin-bottom: 12px; }
-    .chart-head strong { font-size: 14px; }
-    .chart-head span { color: var(--muted); font-size: 11px; }
-    .chart-bars { display: grid; grid-template-columns: repeat(6, 1fr); align-items: end; gap: 8px; height: 82px; }
-    .chart-bars i { display: block; border-radius: 5px 5px 0 0; background: linear-gradient(180deg, var(--mint), #168e71); min-height: 18px; }
-    .chart-labels { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 8px; color: var(--muted); font-size: 10px; text-align: center; }
-    .join-strip { margin: 4px 18px 18px; min-height: 52px; display: grid; place-items: center; border-radius: 8px; background: var(--mint); color: #061014; font-weight: 950; text-decoration: none; }
-
-    .float-panel {
-      position: absolute;
-      width: 224px;
+    .phone-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    .avatar {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--dark);
+      font-size: 14px;
+      font-weight: 950;
+    }
+    .phone-title { font-weight: 950; }
+    .phone-sub { margin-top: 3px; color: var(--muted); font-size: 13px; }
+    .updates { display: grid; gap: 12px; padding: 18px; }
+    .update {
       padding: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 8px;
-      background: rgba(8, 18, 22, 0.9);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
     }
-    .float-panel.one { top: 84px; left: -8px; }
-    .float-panel.two { right: -8px; bottom: 76px; }
-    .float-label { color: var(--muted); font-size: 12px; }
-    .float-value { margin-top: 8px; font-size: 27px; font-weight: 950; }
-    .mini-chart { display: flex; align-items: end; gap: 7px; height: 58px; margin-top: 14px; }
-    .mini-chart span { flex: 1; border-radius: 5px 5px 0 0; background: var(--cyan); }
-    .mini-chart span:nth-child(2) { height: 46%; background: var(--amber); }
-    .mini-chart span:nth-child(3) { height: 76%; background: var(--mint); }
-    .mini-chart span:nth-child(4) { height: 58%; background: var(--rose); }
-    .mini-chart span:nth-child(5) { height: 92%; }
+    .update strong { display: block; margin-bottom: 7px; font-size: 16px; }
+    .update span { color: #c7d9df; font-size: 13px; line-height: 1.45; }
+    .update.highlight { background: rgba(44,199,255,.14); border-color: rgba(44,199,255,.34); }
+    .phone-join { display: block; margin: 0 18px 18px; text-align: center; }
 
-    .section { padding: 84px clamp(18px, 5vw, 64px); background: #f7fbfd; color: #122227; }
-    .section.dark { background: #071014; color: var(--ink); }
-    .section-inner { max-width: 1160px; margin: 0 auto; }
-    .section h2 { max-width: 780px; margin: 0; font-size: clamp(32px, 4vw, 54px); line-height: 1.05; letter-spacing: 0; text-wrap: balance; }
-    .section-lede { max-width: 720px; margin: 18px 0 0; color: #536970; font-size: 18px; line-height: 1.65; }
-    .dark .section-lede { color: var(--muted); }
-
-    .benefits, .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 42px; }
-    .benefit { min-height: 220px; padding: 26px; border: 1px solid #d9e6ea; border-radius: 8px; background: #fff; }
-    .benefit-icon { width: 46px; height: 46px; display: grid; place-items: center; margin-bottom: 24px; border-radius: 8px; background: #eaf8ff; color: #087aa3; font-weight: 950; font-size: 20px; }
-    .benefit h3, .step h3 { margin: 0 0 10px; font-size: 20px; }
-    .benefit p { margin: 0; color: #587078; line-height: 1.6; }
-    .step { padding: 28px; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; background: var(--panel); }
-    .step p { margin: 0; color: var(--muted); line-height: 1.6; }
-
-    .feed-preview { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; margin-top: 42px; }
-    .feed-card { padding: 26px; border-radius: 8px; border: 1px solid rgba(255,255,255,.12); background: var(--panel); }
-    .feed-card h3 { margin: 0 0 16px; font-size: 22px; }
-    .feed-list { display: grid; gap: 12px; }
-    .feed-row { display: grid; grid-template-columns: 92px 1fr; gap: 14px; padding: 14px; border-radius: 8px; background: rgba(255,255,255,.055); }
-    .feed-time { color: var(--mint); font-weight: 900; font-size: 13px; }
-    .feed-row strong { display: block; margin-bottom: 4px; }
-    .feed-row span { color: var(--muted); font-size: 13px; line-height: 1.45; }
-    .big-chart { display: grid; grid-template-columns: repeat(7, 1fr); align-items: end; gap: 10px; height: 220px; padding-top: 20px; }
-    .big-chart span { display: grid; align-items: end; justify-items: center; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, var(--cyan), #156b88); color: #dff7ff; font-size: 11px; font-weight: 900; padding-bottom: 8px; min-height: 44px; }
-    .chart-note { margin-top: 14px; color: var(--muted); font-size: 13px; line-height: 1.5; }
-
-    .final-cta { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; padding: 44px; border-radius: 8px; background: #102229; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: var(--shadow); }
-    .final-cta p { max-width: 640px; margin: 14px 0 0; color: var(--muted); font-size: 17px; line-height: 1.6; }
-    .sticky-mobile { display: none; position: fixed; inset: auto 0 0; z-index: 30; padding: 12px 14px; background: rgba(7, 16, 20, 0.9); border-top: 1px solid var(--line); backdrop-filter: blur(16px); }
-    .sticky-mobile .cta { width: 100%; }
-
-    @media (max-width: 1060px) {
-      .hero { grid-template-columns: 1fr; padding-top: 106px; }
-      .phone-wrap { max-width: 620px; margin: 0 auto; }
-      .proof-row, .benefits, .steps, .feed-preview { grid-template-columns: 1fr; }
-      .final-cta { grid-template-columns: 1fr; padding: 30px; }
+    .section { padding: 72px 18px; background: #f7fbfd; color: #112229; }
+    .section.dark { background: var(--bg); color: var(--text); }
+    .inner { max-width: 1080px; margin: 0 auto; }
+    h2 { max-width: 760px; margin: 0; font-size: clamp(30px, 4vw, 48px); line-height: 1.08; text-wrap: balance; }
+    .section p { max-width: 720px; color: #587078; font-size: 17px; line-height: 1.65; }
+    .dark p { color: var(--muted); }
+    .simple-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
+    .simple-card { padding: 24px; border-radius: 8px; background: var(--white); border: 1px solid #dce8ec; }
+    .simple-card b { display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 18px; border-radius: 50%; background: #e9f8ff; color: #087ba3; }
+    .simple-card h3 { margin: 0 0 8px; font-size: 20px; }
+    .simple-card p { margin: 0; color: #60737a; font-size: 15px; }
+    .final-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 36px;
+      border-radius: 8px;
+      background: var(--panel);
+      border: 1px solid var(--line);
     }
-    @media (max-width: 720px) {
-      body { padding-bottom: 74px; }
+    .final-box p { margin-bottom: 0; }
+    .sticky {
+      display: none;
+      position: fixed;
+      inset: auto 0 0;
+      z-index: 20;
+      padding: 12px 14px;
+      background: rgba(7,16,20,.92);
+      border-top: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+    .sticky .btn { width: 100%; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 42px; }
+      .simple-grid { grid-template-columns: 1fr; }
+      .final-box { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      body { padding-bottom: 76px; }
       .nav { padding: 14px 16px; }
-      .nav-links, .nav .cta { display: none; }
+      .nav .btn { display: none; }
       .brand span { font-size: 14px; }
-      .hero { min-height: auto; padding: 96px 16px 48px; }
-      .hero-actions .cta { width: 100%; }
-      .proof-row { margin-top: 28px; }
-      .phone-wrap { min-height: 620px; }
-      .phone { width: min(92vw, 350px); min-height: 620px; }
-      .float-panel { display: none; }
-      .section { padding: 58px 16px; }
-      .benefit, .step, .feed-card { padding: 22px; }
-      .feed-row { grid-template-columns: 1fr; }
-      .sticky-mobile { display: block; }
+      .hero { padding-left: 16px; padding-right: 16px; }
+      .actions .btn { width: 100%; }
+      .section { padding: 56px 16px; }
+      .final-box { padding: 26px; }
+      .sticky { display: block; }
     }
   </style>
 </head>
 <body>
-  <main class="page-shell">
-    <nav class="nav" aria-label="Primary navigation">
-      <div class="brand" aria-label="Chota Bhai Prediction Channel"><div class="brand-mark">CB</div><span>Chota Bhai Prediction</span></div>
-      <div class="nav-links"><a href="#why">Why Join</a><a href="#inside">Inside Channel</a><a href="#join">Access</a></div>
-      <a class="cta telegram-link" href="https://t.me/+XjnAdrUdevYzOGM1">Join Telegram</a>
+  <div class="page">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="brand"><div class="brand-mark">CB</div><span>Chota Bhai Prediction</span></div>
+      <a class="btn blue telegram-link" href="https://t.me/+XjnAdrUdevYzOGM1">Join Telegram</a>
     </nav>
 
-    <section class="hero">
-      <div>
-        <div class="eyebrow"><span class="pulse"></span> Telegram channel for cricket prediction updates</div>
-        <h1>Join Chota Bhai Prediction Channel before the next match starts.</h1>
-        <p class="hero-copy">Get cricket match analysis, toss-watch notes, score angle updates, and final prediction posts directly on Telegram. One tap joins the channel.</p>
-        <div class="hero-actions"><a class="cta telegram-link" href="https://t.me/+XjnAdrUdevYzOGM1">Join Telegram Now</a><a class="cta secondary" href="#inside">Preview Channel Style</a></div>
-        <div class="proof-row" aria-label="Channel highlights"><div class="proof-item"><strong>Match</strong><span>Pre-match thoughts and key points before big games.</span></div><div class="proof-item"><strong>Toss</strong><span>Quick updates around toss, pitch, and playing conditions.</span></div><div class="proof-item"><strong>Final</strong><span>Simple final call posts when the match setup is clear.</span></div></div>
-        <p class="trust-note">Predictions are informational and for community discussion. No outcome is guaranteed.</p>
-      </div>
-
-      <div class="phone-wrap" aria-hidden="true">
-        <div class="float-panel one"><div class="float-label">Match pulse</div><div class="float-value">Live</div><div class="mini-chart"><span style="height:34%"></span><span></span><span></span><span></span><span></span></div></div>
-        <div class="phone">
-          <div class="phone-top"><div class="avatar">CB</div><div><div class="channel-name">Chota Bhai</div><div class="channel-sub">Prediction updates</div></div></div>
-          <div class="message-list">
-            <article class="post-card accent"><div class="post-meta"><span>Today</span><span>Match Preview</span></div><div class="post-title">Powerplay momentum looks important today</div><p class="post-copy">Watch pitch pace early. If batting side starts clean, first innings score range can move fast.</p><div class="tag-row"><span class="tag hot">Pre-match</span><span class="tag">Score angle</span></div></article>
-            <article class="post-card"><div class="post-meta"><span>Update</span><span>Toss Watch</span></div><div class="post-title">Toss and playing XI update comes first</div><p class="post-copy">Final direction is posted after toss, pitch report, and team changes are confirmed.</p><div class="tag-row"><span class="tag">Toss</span><span class="tag">XI check</span></div></article>
-            <div class="channel-chart"><div class="chart-head"><strong>Update window</strong><span>Before match</span></div><div class="chart-bars"><i style="height:36%"></i><i style="height:52%"></i><i style="height:74%"></i><i style="height:88%"></i><i style="height:66%"></i><i style="height:44%"></i></div><div class="chart-labels"><span>2h</span><span>90m</span><span>60m</span><span>Toss</span><span>XI</span><span>Final</span></div></div>
-            <article class="post-card accent"><div class="post-meta"><span>Channel</span><span>Final Call</span></div><div class="post-title">Final prediction post is shared inside Telegram</div><p class="post-copy">Join the channel to see the latest post when the setup is complete.</p><div class="tag-row"><span class="tag hot">Join to view</span><span class="tag">Telegram</span></div></article>
-          </div>
-          <a class="join-strip telegram-link" href="https://t.me/+XjnAdrUdevYzOGM1">JOIN CHANNEL</a>
+    <main class="hero">
+      <section>
+        <div class="badge"><span class="dot"></span> Free Telegram channel</div>
+        <h1>Join Chota Bhai Prediction Channel</h1>
+        <p class="lead">Get accurate prediction updates, secured ID support, toss updates, and faster match updates directly on Telegram.</p>
+        <div class="actions">
+          <a class="btn telegram-link" href="https://t.me/+XjnAdrUdevYzOGM1">Join Telegram Channel</a>
+          <a class="btn ghost" href="#how">How It Works</a>
         </div>
-        <div class="float-panel two"><div class="float-label">Update speed</div><div class="float-value">Quick</div><div class="mini-chart"><span style="height:44%"></span><span></span><span></span><span></span><span></span></div></div>
-      </div>
-    </section>
-  </main>
+        <p class="small-note">One tap opens Telegram. Predictions are shared for information and community discussion only. No result is guaranteed.</p>
+      </section>
 
-  <section id="why" class="section">
-    <div class="section-inner">
-      <h2>A direct landing page for Meta ads traffic.</h2>
-      <p class="section-lede">Visitors from Facebook or Instagram get one clear action: open Telegram and join Chota Bhai Prediction Channel. No form, no extra steps, no confusion.</p>
-      <div class="benefits"><article class="benefit"><div class="benefit-icon">1</div><h3>Real channel-style preview</h3><p>The landing page shows the kind of match notes, toss updates, and prediction posts followers can expect.</p></article><article class="benefit"><div class="benefit-icon">2</div><h3>Direct Telegram join</h3><p>Every main button sends visitors straight to the channel invite link you provided.</p></article><article class="benefit"><div class="benefit-icon">3</div><h3>Ad-friendly structure</h3><p>Clean copy, simple promise, mobile-first CTA, and a visible disclaimer for safer campaign review.</p></article></div>
+      <aside class="phone-card" aria-label="Telegram channel preview">
+        <div class="phone-head"><div class="avatar">CB</div><div><div class="phone-title">Chota Bhai</div><div class="phone-sub">Prediction updates</div></div></div>
+        <div class="updates">
+          <div class="update highlight"><strong>Accurate Prediction</strong><span>Clear match prediction updates based on pitch, form, toss, and team news.</span></div>
+          <div class="update"><strong>Toss Update</strong><span>Fast toss and playing XI updates before the final match post.</span></div>
+          <div class="update"><strong>Secured ID Support</strong><span>Get secured ID guidance and match updates directly inside Telegram.</span></div>
+        </div>
+        <a class="btn phone-join telegram-link" href="https://t.me/+XjnAdrUdevYzOGM1">JOIN CHANNEL</a>
+      </aside>
+    </main>
+  </div>
+
+  <section id="how" class="section">
+    <div class="inner">
+      <h2>Easy for every visitor to understand.</h2>
+      <p>This landing page has one purpose: send people from Meta ads to your Telegram channel without confusion.</p>
+      <div class="simple-grid">
+        <article class="simple-card"><b>1</b><h3>See the channel</h3><p>Visitor understands this is a Telegram prediction channel.</p></article>
+        <article class="simple-card"><b>2</b><h3>Tap join</h3><p>The main button opens your Telegram invite link directly.</p></article>
+        <article class="simple-card"><b>3</b><h3>Follow updates</h3><p>They can read future match updates inside Telegram.</p></article>
+      </div>
     </div>
   </section>
 
-  <section id="inside" class="section dark">
-    <div class="section-inner">
-      <h2>What the channel preview now shows.</h2>
-      <p class="section-lede">The empty bars are replaced with professional-looking match cards and charts, so your manager sees a real campaign-ready landing page.</p>
-      <div class="feed-preview">
-        <div class="feed-card"><h3>Sample update flow</h3><div class="feed-list"><div class="feed-row"><div class="feed-time">2 hrs before</div><div><strong>Match setup</strong><span>Pitch, recent form, and score range notes.</span></div></div><div class="feed-row"><div class="feed-time">At toss</div><div><strong>Toss watch</strong><span>Playing XI and condition changes before final post.</span></div></div><div class="feed-row"><div class="feed-time">Final post</div><div><strong>Prediction update</strong><span>Clear Telegram post for followers who joined from the ad.</span></div></div></div></div>
-        <div class="feed-card"><h3>Posting rhythm</h3><div class="big-chart"><span style="height:44%">Mon</span><span style="height:62%">Tue</span><span style="height:78%">Wed</span><span style="height:54%">Thu</span><span style="height:86%">Fri</span><span style="height:72%">Sat</span><span style="height:92%">Sun</span></div><p class="chart-note">Illustrative chart showing a steady flow of channel updates around active match days.</p></div>
+  <section class="section dark">
+    <div class="inner">
+      <div class="final-box">
+        <div><h2>Ready to join?</h2><p>Open Telegram and join Chota Bhai Prediction Channel now.</p></div>
+        <a class="btn telegram-link" href="https://t.me/+XjnAdrUdevYzOGM1">Join Telegram</a>
       </div>
     </div>
   </section>
 
-  <section id="join" class="section dark">
-    <div class="section-inner"><div class="final-cta"><div><h2>Ready to send ad traffic to Telegram?</h2><p>Share this landing page with your manager. When the ad goes live, every CTA will direct visitors to Chota Bhai Prediction Channel.</p></div><a class="cta telegram-link" href="https://t.me/+XjnAdrUdevYzOGM1">Join Telegram</a></div></div>
-  </section>
-
-  <div class="sticky-mobile"><a class="cta telegram-link" href="https://t.me/+XjnAdrUdevYzOGM1">Join Telegram</a></div>
+  <div class="sticky"><a class="btn telegram-link" href="https://t.me/+XjnAdrUdevYzOGM1">Join Telegram Channel</a></div>
 
   <script>
     const telegramUrl = "https://t.me/+XjnAdrUdevYzOGM1";
