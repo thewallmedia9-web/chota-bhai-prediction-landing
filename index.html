@@ -121,6 +121,30 @@
     }
     .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
     .small-note { max-width: 620px; margin-top: 18px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .timer-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 22px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(44,199,255,.32);
+      background: rgba(44,199,255,.1);
+      color: #d9f6ff;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .timer-number {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--dark);
+      font-size: 18px;
+      font-weight: 950;
+    }
 
     .phone-card {
       width: min(100%, 390px);
@@ -284,9 +308,27 @@
     document.querySelectorAll(".telegram-link").forEach((link) => {
       link.href = telegramUrl;
       link.addEventListener("click", () => {
-        localStorage.setItem("chotaBhaiTelegramClicked", JSON.stringify({ clickedAt: new Date().toISOString(), tracking }));
+        localStorage.setItem("chotaBhaiTelegramClicked", JSON.stringify({ clickedAt: new Date().toISOString(), tracking, method: "manual" }));
       });
     });
+
+    let secondsLeft = 20;
+    const timerNumber = document.getElementById("redirectTimer");
+    const timerText = document.getElementById("redirectText");
+    const updateTimer = () => {
+      if (timerNumber) timerNumber.textContent = String(secondsLeft);
+      if (timerText) timerText.textContent = secondsLeft === 1 ? "1 second" : secondsLeft + " seconds";
+    };
+    updateTimer();
+    const countdown = setInterval(() => {
+      secondsLeft -= 1;
+      updateTimer();
+      if (secondsLeft <= 0) {
+        clearInterval(countdown);
+        localStorage.setItem("chotaBhaiTelegramClicked", JSON.stringify({ clickedAt: new Date().toISOString(), tracking, method: "auto_redirect" }));
+        window.location.href = telegramUrl;
+      }
+    }, 1000);
   </script>
 </body>
 </html>
