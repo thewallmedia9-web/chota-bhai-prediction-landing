@@ -1,31 +1,12 @@
-# Render deployment config for Pro Media OTP + frontend.
-# When you connect this repo to Render, it reads this file and provisions the service automatically.
-# Secrets (sync: false) are filled in via the Render dashboard UI — never committed here.
-
 services:
   - type: web
-    name: promedia
+    name: chota-bhai-prediction
     runtime: node
     plan: free
-    region: singapore           # closest free region to India for lowest latency
+    region: singapore
     buildCommand: npm install
     startCommand: node server.js
     healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production
-      - key: FRONTEND_URL
-        value: "*"
-      - key: SMS_API_URL
-        value: https://login.adbizzdigital.com/sms-panel/api/http/index.php
-      - key: SMS_USERNAME
-        value: promedia
-      - key: SMS_SENDER_ID
-        value: YTWONX
-      - key: SMS_TEMPLATE_TEXT
-        value: "Your OTP for registration is {#var#}. Valid for 10 Mins. KSN Lunch Box Y2nx"
-      # The two real secrets — fill these in via Render dashboard, NOT here.
-      - key: SMS_API_KEY
-        sync: false
-      - key: SMS_TEMPLATE_ID
-        sync: false
