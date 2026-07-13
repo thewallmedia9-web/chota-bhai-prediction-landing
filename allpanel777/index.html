@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AllPanel777 Telugu most trusted book shop. Contact on WhatsApp to get your ID with fast support.">
+  <title>AllPanel777 | Telugu Most Trusted Book</title>
+  <style>
+    :root {
+      --bg: #050706;
+      --panel: #0d1513;
+      --panel-2: #101f1b;
+      --text: #f8fff9;
+      --muted: #a4b8b1;
+      --line: rgba(255, 255, 255, 0.13);
+      --teal: #29e4d0;
+      --orange: #ff9718;
+      --green: #25d366;
+      --cream: #fff4dc;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a { color: inherit; }
+
+    .site {
+      min-height: 100vh;
+      background:
+        linear-gradient(120deg, rgba(5,7,6,.96), rgba(5,7,6,.84) 52%, rgba(26,13,3,.75)),
+        radial-gradient(circle at 83% 16%, rgba(255,151,24,.22), transparent 35%),
+        radial-gradient(circle at 14% 82%, rgba(41,228,208,.17), transparent 36%);
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px clamp(16px, 5vw, 70px);
+      background: rgba(5, 7, 6, 0.82);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 950;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(41, 228, 208, .42);
+    }
+
+    .brand span {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .nav-links a { text-decoration: none; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 8px;
+      border: 0;
+      background: var(--green);
+      color: #03100a;
+      font-weight: 950;
+      text-decoration: none;
+      box-shadow: 0 16px 42px rgba(37, 211, 102, .28);
+      transition: transform .18s ease, filter .18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .btn.alt {
+      background: linear-gradient(135deg, var(--orange), #ffc057);
+      box-shadow: 0 16px 42px rgba(255, 151, 24, .26);
+    }
+
+    .btn.ghost {
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--line);
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
+      align-items: center;
+      gap: clamp(34px, 7vw, 84px);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(50px, 8vw, 94px) 18px 76px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(41, 228, 208, .34);
+      background: rgba(41, 228, 208, .09);
+      color: #c8fff8;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 6px rgba(41,228,208,.12);
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 22px 0 0;
+      font-size: clamp(42px, 6.5vw, 82px);
+      line-height: .98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .accent { color: var(--orange); }
+
+    .lead {
+      max-width: 660px;
+      margin: 22px 0 0;
+      color: #d7e6e1;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.62;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 34px;
+      max-width: 700px;
+    }
+
+    .trust-chip {
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.055);
+    }
+
+    .trust-chip strong {
+      display: block;
+      color: var(--cream);
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .trust-chip span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.42;
+    }
+
+    .hero-card {
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card img {
+      display: block;
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(41,228,208,.26);
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+    }
+
+    .contact-strip {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(41,228,208,.1);
+      border: 1px solid rgba(41,228,208,.28);
+    }
+
+    .contact-strip span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .contact-strip strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 20px;
+      color: var(--text);
+    }
+
+    .section {
+      padding: 74px 18px;
+      background: #f8fbfa;
+      color: #121d1a;
+    }
+
+    .section.dark {
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(31px, 4vw, 52px);
+      line-height: 1.08;
+      text-wrap: balance;
+    }
+
+    .section-copy {
+      max-width: 730px;
+      margin: 16px 0 0;
+      color: #5d706b;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .dark .section-copy {
+      color: var(--muted);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .service-card {
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid #dce8e4;
+      background: white;
+    }
+
+    .service-card b {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      background: #e9fffc;
+      color: #087f72;
+      font-size: 20px;
+    }
+
+    .service-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: #5e716c;
+      line-height: 1.58;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .step {
+      padding: 25px;
+      border-radius: 8px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .step .num {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #120800;
+      font-weight: 950;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .final-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 38px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #10221e, #0b1513);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .final-box p {
+      max-width: 650px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .fine-print {
+      max-width: 960px;
+      margin: 28px auto 0;
+      color: #7f918c;
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green);
+      color: #03100a;
+      font-weight: 950;
+      text-decoration: none;
+      box-shadow: 0 14px 38px rgba(37,211,102,.4);
+    }
+
+    @media (max-width: 940px) {
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 48px; }
+      .service-grid, .steps, .trust-row { grid-template-columns: 1fr; }
+      .final-box, .contact-strip { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .nav { padding: 12px 14px; }
+      .brand span { font-size: 14px; }
+      .nav .btn { display: none; }
+      .hero { padding-left: 16px; padding-right: 16px; }
+      .hero-actions .btn { width: 100%; }
+      .section { padding: 58px 16px; }
+      .final-box { padding: 26px; }
+      .whatsapp-float { right: 14px; bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="AllPanel777 home">
+        <img src="assets/allpanel777-logo.jpeg" alt="AllPanel777 logo">
+        <span>AllPanel777</span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#process">How It Works</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn whatsapp-link" href="https://wa.me/917416729251?text=Hi%20AllPanel777%2C%20I%20want%20to%20get%20an%20ID">Get ID on WhatsApp</a>
+    </nav>
+
+    <main id="top" class="hero">
+      <section>
+        <div class="eyebrow"><span class="dot"></span> Telugu most trusted book</div>
+        <h1>AllPanel777 <span class="accent">Book Shop</span></h1>
+        <p class="lead">Fast ID support, Telugu assistance, 25% bonus offer, and direct WhatsApp onboarding for AllPanel777 users.</p>
+        <div class="hero-actions">
+          <a class="btn whatsapp-link" href="https://wa.me/917416729251?text=Hi%20AllPanel777%2C%20I%20want%20to%20get%20an%20ID">Get Your ID Now</a>
+          <a class="btn ghost" href="https://allpanel777.global">Visit Official Site</a>
+        </div>
+        <div class="trust-row" aria-label="Highlights">
+          <div class="trust-chip"><strong>25%</strong><span>Bonus offer for new users.</span></div>
+          <div class="trust-chip"><strong>Telugu</strong><span>Easy local-language assistance.</span></div>
+          <div class="trust-chip"><strong>24/7</strong><span>WhatsApp support for ID queries.</span></div>
+        </div>
+      </section>
+
+      <aside class="hero-card">
+        <img src="assets/allpanel777-logo.jpeg" alt="AllPanel777 trusted book promotional artwork">
+        <div class="contact-strip">
+          <div><span>25% bonus offer available</span><strong>+91 74167 29251</strong></div>
+          <a class="btn alt whatsapp-link" href="https://wa.me/917416729251?text=Hi%20AllPanel777%2C%20I%20want%20to%20get%20an%20ID">Message Now</a>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <section id="services" class="section">
+    <div class="inner">
+      <h2>Simple support for getting your AllPanel777 ID.</h2>
+      <p class="section-copy">This landing page makes the next step clear: contact AllPanel777 on WhatsApp and get guided support for your ID.</p>
+      <div class="service-grid">
+        <article class="service-card">
+          <b>1</b>
+          <h3>25% Bonus</h3>
+          <p>Ask on WhatsApp about the latest 25% bonus offer for new ID support.</p>
+        </article>
+        <article class="service-card">
+          <b>2</b>
+          <h3>ID Assistance</h3>
+          <p>Message on WhatsApp and get guided help for AllPanel777 ID onboarding.</p>
+        </article>
+        <article class="service-card">
+          <b>3</b>
+          <h3>Telugu Support</h3>
+          <p>Clear Telugu-friendly communication for users who want simple instructions.</p>
+        </article>
+        <article class="service-card">
+          <b>4</b>
+          <h3>Fast Response</h3>
+          <p>Direct WhatsApp contact keeps the process quick and easy to understand.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="section dark">
+    <div class="inner">
+      <h2>How it works.</h2>
+      <p class="section-copy">A simple three-step flow for clients coming from ads or social media.</p>
+      <div class="steps">
+        <article class="step">
+          <div class="num">1</div>
+          <h3>Click WhatsApp</h3>
+          <p>Tap any button on the page to open WhatsApp chat with AllPanel777.</p>
+        </article>
+        <article class="step">
+          <div class="num">2</div>
+          <h3>Ask for ID</h3>
+          <p>Send the pre-filled message and wait for the support team to respond.</p>
+        </article>
+        <article class="step">
+          <div class="num">3</div>
+          <h3>Get guidance</h3>
+          <p>Receive next steps and support directly through WhatsApp.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section dark">
+    <div class="inner">
+      <div class="final-box">
+        <div>
+          <h2>Ready to get your ID?</h2>
+          <p>Contact AllPanel777 Book Shop on WhatsApp and ask for ID support with the 25% bonus offer.</p>
+        </div>
+        <a class="btn whatsapp-link" href="https://wa.me/917416729251?text=Hi%20AllPanel777%2C%20I%20want%20to%20get%20an%20ID">WhatsApp Now</a>
+      </div>
+      <p class="fine-print">18+ only. Use this service only where permitted by local law. This page is for contact and onboarding assistance. All trademarks and brand assets belong to their respective owners.</p>
+    </div>
+  </section>
+
+  <a class="whatsapp-float whatsapp-link" href="https://wa.me/917416729251?text=Hi%20AllPanel777%2C%20I%20want%20to%20get%20an%20ID" aria-label="Chat on WhatsApp">WA</a>
+</body>
+</html>
